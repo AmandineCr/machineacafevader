@@ -17,8 +17,8 @@
             </thead>
                 <tr>
                     <td>{{$drink->id}}</td>
-                    <td>{{$drink->titles}}</td>
-                    <td>{{$drink->prices}}</td>
+                    <td>{{$drink->drinkName}}</td>
+                    <td>{{$drink->price}}</td>
                 </tr>
         </table>
 

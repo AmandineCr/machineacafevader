@@ -12,10 +12,12 @@ class recipesController extends BaseController
 {
     function recipes()
     {
-        $allrecipes =DB::select('select * from boissoningredients');
+        $recipes = $recipes->drinkName = Drink::get('drinkName');
+        $recipes->price = Drink::get('ingredientName');
+        return Redirect::route('drink.recettes',['recipes'=>$recipes]);
 
 
-        return view('back_office/recettes', ['allrecipes' => $allrecipes]);
+//        return view('back_office/recettes', ['recipes' => $recipes]);
     }
 }
 

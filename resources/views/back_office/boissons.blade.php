@@ -12,38 +12,62 @@
             <tr>
                 <th><a href="/drinks/orderbyname">Drinks available</a></th>
                 <th><a href="/drinks/orderbyprice">prices</a></th>
-                <th>Show</th>
+                <th>Details</th>
             </tr>
             </thead>
             @foreach($drinks as $drink)
                 <tr>
                     <td>
-                        {{$drink->titles}}
-                    </td>                    <td>
-                        {{$drink->prices}}
+                        {{$drink->drinkName}}
                     </td>
                     <td>
-                        <a href="/drinks/{{$drink->id}}">Détails</a>
+                        {{$drink->price}}
                     </td>
                     <td>
-                    <a  href="/drink/{{$drink->id}}/edit" class="btn btn-info">
-                        {{--<form action="/drinks/{{$drink->id}}" method="post">--}}
-                        edit
-                    </a>
+                        <a href="/drinks/{{$drink->ID}}">Show details</a>
+                    </td>
 
-                    <a  href="/drink/{{$drink->id}}/edit" class="btn btn-danger">
-                        remove
-                        {{--{{csrf_field()}}{{method_field('GET')}}--}}
-                    </a>
+                    <td>
+                        <form action="edit" method="post">
+                            {{csrf_field()}}
+
+                            <a href="/drinks/{{$drink->ID}}/edit" class="btn btn-outline-info">
+                                edit
+                            </a>
+                        </form>
+                    </td>
+                    <td>
+                            <form action="{{url('drinks', [$drink->id])}}" method="POST">
+                            {{method_field('DELETE')}}
+                                <button type="submit" class="btn btn-outline-danger" value="Delete"/>Delete
+                                </button>
+                            </form>
+                        </button>
                     </td>
                 </tr>
             @endforeach
         </table>
-        <div class="btn-group-vertical" data-toggle="buttons">
-            <a  href="/drink/{{$drink->id}}/edit" class="btn btn-success" >
+        <form action="/edit" method="post">
+            {{csrf_field()}}
+        <div class="btn-group" data-toggle="buttons">
+            <div class="btn-group" data-toggle="buttons">
+                <input type="text" name="addDrink" class="form control" placeholder="Drink Name">
+            </div>
+            <div>
+                <input type="text" name="addPrice" class="form control" placeholder="Drink Price">
+            </div>
+            <a href="/drink/{{$drink->id}}add" class="btn btn-success">
                 add
             </a>
-
         </div>
+        {{--<a  href="/drink/{{$drink->id}}edit" class="btn btn-info">--}}
+        {{--<form action="/drinks/{{$drink->id}}" method="post">--}}
+        {{--edit--}}
+        {{--</a>--}}
+
+        {{--<a  href="/drink/{{$drink->id}}edit" class="btn btn-danger">--}}
+        {{--remove--}}
+        {{--{{csrf_field()}}{{method_field('GET')}}--}}
+        {{--</a>--}}
     </div>
 @stop

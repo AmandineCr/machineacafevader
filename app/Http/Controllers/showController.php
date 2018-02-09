@@ -16,11 +16,10 @@ class showController extends Controller
 //    }
 
     function detailsDrink($id){
-        $boisson = Drink::all();
-        $boisson = Drink::find($id);
+        $drink = Drink::find($id);
 //            DB::select('select prix,nomBoisson FROM boissons WHERE code=?', [$code]);
 
-        return view('back_office/show', ['boissons'=> $boisson]);
+        return view('back_office/show/{{$drink->id}}', ['drink'=> $drink]);
 
     }
 }

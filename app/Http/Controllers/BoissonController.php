@@ -24,10 +24,9 @@ class BoissonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-
-
-
+        return Drink::make('drink.create');
     }
 
     /**
@@ -38,7 +37,16 @@ class BoissonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $drink = new Drink;
+        $drink->drinkName = input::get('drinkName');
+        $drink->price = input::get('price');
+        $drink->id = input::get('id');
+
+        $drink->save();
+
+        Session::flash('flash_message', 'Drink successfully added!');
+
+        return redirect()->back();
     }
 
     /**
@@ -47,9 +55,9 @@ class BoissonController extends Controller
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function show(Drink $drink)
+    public function show(Drink $id)
     {
-//        $drink = Drink::find($drink);
+        $drink = Drink::find($id);
         return view('back_office.show', ['drink'=> $drink]);
     }
 
@@ -59,9 +67,9 @@ class BoissonController extends Controller
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function edit(Drink $drink)
+    public function edit(Drink $id)
     {
-        $drink = Drink::find($drink);
+        $drink = Drink::find($id);
 
         return view('back_office.edit',['drink'=>$drink]);
     }
@@ -75,7 +83,18 @@ class BoissonController extends Controller
      */
     public function update(Request $request, Drink $drink)
     {
-        //
+        $post = drink::find($drink);
+
+        //complete validation here
+
+        $post->drinkName  = Input::get('drinkName');
+        $post->users = Auth::user()->first;
+        $post->price   = Input::get('price');
+
+
+        if($post->save()) {
+            return Redirect::route('drinks.index');
+        }
     }
 
     /**
@@ -86,16 +105,19 @@ class BoissonController extends Controller
      */
     public function destroy(Drink $drink)
     {
-        //
+        Drink::destroy($drink);
+        Session::flash('message', 'You have successfull deleted a blog post');
+
+        return Redirect::route('drinks.index');
     }
 
     function ordernames(){
-        $drinks = Drink::select('titles','prices','id')->orderBy('titles','asc')->get();
+        $drinks = Drink::select('drinkName','price','ID')->orderBy('drinkName','desc')->get();
         return view('back_office/boissons', ['drinks'=> $drinks]);
     }
 
     function orderprices(){
-        $drinks = Drink::select('titles','prices','id')->orderBy('prices','asc')->get();
+        $drinks = Drink::select('drinkName','price','ID')->orderBy('price','desc')->get();
         return view('back_office/boissons', ['drinks'=> $drinks]);
     }
 }

@@ -25,23 +25,28 @@ Route::get('stocks','Controller_Stock@display_stock');
 
 Route::get('commandes', 'CommandeController@listCommande');
 
-Route::get('recettes','recipesController@recipes');
+//Route::get('recettes','recipesController@recipes');
 
 
 //Route::get('/boissons', 'DrinkController@listDrink');
 //
-//
+
 Route::get('/drinks/orderbyname','BoissonController@ordernames');
 
 Route::get('/drinks/orderbyprice','BoissonController@orderprices');
 
-Route::resource('drinks','BoissonController');
+Route::get('/drinks/details/{{$drink->id}}','BoissonController@show');
+Route::get('/drinks/{{$drink->id}}','BoissonController@show');
 
-//Route::get('/boissons/details/{id}','BoissonController@show');
-//Route::get('/boissons/{id}','BoissonController@show');
+Route::resource('/drinks','BoissonController');
+Route::resource('/recipes','recipesController');
+Route::resource('/commandes','CommandeController');
+Route::resource('/pieces','controller_pieces');
+Route::resource('/stocks','controller_Stock');
+
 
 //===============================================================
-//
+// RESOURCE = à
 //Route::get('/boissons', 'BoissonController@index');
 //
 //Route::get('/boissons/create','BoissonController@create');

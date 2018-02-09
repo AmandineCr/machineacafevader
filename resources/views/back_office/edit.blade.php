@@ -17,14 +17,15 @@
             </thead>
             <tr>
                 <td>{{$drink->id}}</td>
-                <td>{{$drink->titles}}</td>
-                <td>{{$drink->prices}}</td>
+                <td>{{$drink->drinkName}}</td>
+                <td>{{$drink->price}}</td>
             </tr>
         </table>
+        <form action="/edit" method="post">
+            {{csrf_field()}}
+            <div class="btn-group-vertical" data-toggle="buttons">
+                <input type="text" name="addDrink" class="form control" placeholder="Drink Name">
+            </div>
+        </form>
 
-        <div class="btn-group-vertical" data-toggle="buttons">
-            <button type="button" class="btn">
-                edit
-            </button>
-        </div>
     </div>

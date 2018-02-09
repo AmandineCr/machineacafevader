@@ -13,8 +13,8 @@ class EditController extends Controller
     function editDrink($drink)
     {
 
-        $drink->titles = Drink::get('titles');
-        $drink->prices = Drink::get('prices');
-        return Redirect::route('drink.edit',['drinks'=>$drinks]);
+        $drink->drinkName = Drink::get('drinkName');
+        $drink->price = Drink::get('price');
+        return Redirect::route('drink.edit',['drink'=>$drink]);
     }
-    }
+}
