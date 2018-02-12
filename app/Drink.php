@@ -7,23 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Drink extends Model
 {
     protected $fillable = ['drinkName','price'];
-}
 
-class Ingredients extends Model
-{
     function sales(){
-        hasMany('app/Sales');
+        hasMany('app\Sale');
     }
+
     function ingredients(){
-        belongsToMany('app/Sales')->withPivot('dose');
+        belongsToMany('app\Sale')->withpivot(['dose']);
     }
+
 }
 
-class Sales extends Model
-{
-    function drink(){
-        belongsTo('app/Drink');
 
-        )
-    }
-}

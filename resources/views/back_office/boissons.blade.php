@@ -37,12 +37,17 @@
                         </form>
                     </td>
                     <td>
-                            <form action="{{url('drinks', [$drink->id])}}" method="POST">
-                            {{method_field('DELETE')}}
-                                <button type="submit" class="btn btn-outline-danger" value="Delete"/>Delete
-                                </button>
-                            </form>
-                        </button>
+                        <form method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="btn btn-lg btn-warning col-md-offset-1 col-md-3">Supprimer</button>
+                        </form>
+                            {{--<form action="{{url('drinks', [$drink->id])}}" method="POST">--}}
+                            {{--{{method_field('DELETE')}}--}}
+                                {{--<button type="submit" class="btn btn-outline-danger" value="Delete"/>Delete--}}
+                                {{--</button>--}}
+                            {{--</form>--}}
+                        {{--</button>--}}
                     </td>
                 </tr>
             @endforeach

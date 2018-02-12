@@ -26,7 +26,8 @@ class BoissonController extends Controller
     public function create()
 
     {
-        return Drink::make('drink.create');
+        return view('Drink.formulaire');
+//            Drink::make('drink.create');
     }
 
     /**
@@ -37,16 +38,22 @@ class BoissonController extends Controller
      */
     public function store(Request $request)
     {
-        $drink = new Drink;
-        $drink->drinkName = input::get('drinkName');
-        $drink->price = input::get('price');
-        $drink->id = input::get('id');
+        $data = [
+            'Drink' =>[
+                'ID' => request('ID'),
+                'drinkName' => request('drinkName'),
+                'price' => request('price'),
+            ],
+        ];
+//        $drink = new Drink;
+//        $drink->drinkName = input::get('drinkName');
+//        $drink->price = input::get('price');
+//        $drink->id = input::get('id');
+//        $drink->save();
 
-        $drink->save();
-
-        Session::flash('flash_message', 'Drink successfully added!');
-
-        return redirect()->back();
+//        Session::flash('flash_message', 'Drink successfully added!');
+//        return redirect()->back();
+        return view('Drink.results,$data');
     }
 
     /**
@@ -83,19 +90,16 @@ class BoissonController extends Controller
      */
     public function update(Request $request, Drink $drink)
     {
-        $post = drink::find($drink);
+        $data = [
+        request('ID'),
+        request('drinkName'),
+        request('price'),
+        ];
 
-        //complete validation here
-
-        $post->drinkName  = Input::get('drinkName');
-        $post->users = Auth::user()->first;
-        $post->price   = Input::get('price');
-
-
-        if($post->save()) {
-            return Redirect::route('drinks.index');
-        }
+        $drink::update($data);
+            return Redirect()->route('drinks');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -105,10 +109,12 @@ class BoissonController extends Controller
      */
     public function destroy(Drink $drink)
     {
-        Drink::destroy($drink);
-        Session::flash('message', 'You have successfull deleted a blog post');
-
-        return Redirect::route('drinks.index');
+        $drink->delete();
+        return redirect()->route('Drink');
+//        Drink::destroy($drink);
+//        Session::flash('message', 'You have successfull deleted a blog post');
+//
+//        return Redirect::route('drinks.index');
     }
 
     function ordernames(){

@@ -14,10 +14,11 @@ class CreateDrinks extends Migration
     public function up()
     {
         Schema::create('drinks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ingredients_ID');
             $table->timestamps();
-            $table->string('titles');
-            $table->integer('prices');
+            $table->string('ingredientName');
+            $table->integer('price');
+            $table->text('drinkName');
         });
     }
 

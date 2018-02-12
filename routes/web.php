@@ -37,7 +37,8 @@ Route::get('/drinks/orderbyprice','BoissonController@orderprices');
 
 Route::get('/drinks/details/{{$drink->id}}','BoissonController@show');
 Route::get('/drinks/{{$drink->id}}','BoissonController@show');
-
+Route::get('/drink/create', 'BoissonController@create');
+Route::post('/drinks', 'BoissonController@store');
 Route::resource('/drinks','BoissonController');
 Route::resource('/recipes','recipesController');
 Route::resource('/commandes','CommandeController');
