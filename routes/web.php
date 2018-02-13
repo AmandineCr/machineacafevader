@@ -19,44 +19,36 @@ Route::get('back_office', function()
 {
     return view('back_office.index');
 });
-Route::get('pieces', 'controller_pieces@list');
-
-Route::get('stocks','Controller_Stock@display_stock');
-
-Route::get('commandes', 'CommandeController@listCommande');
-
-//Route::get('recettes','recipesController@recipes');
+//Route::get('pieces', 'CoinController@list');
+//Route::get('stocks','StockController@display_stock');
+//Route::get('sales', 'SaleController@listCommande');
 
 
-//Route::get('/boissons', 'DrinkController@listDrink');
-//
+Route::get('/drinks/orderbyname','DrinkController@ordernames');
+Route::get('/drinks/orderbyprice','DrinkController@orderprices');
 
-Route::get('/drinks/orderbyname','BoissonController@ordernames');
+Route::get('/drinks/details/{{$drink->drink_ID}}','DrinkController@show');
+Route::get('/drinks/{{$drink->drink_ID}}','DrinkController@show');
 
-Route::get('/drinks/orderbyprice','BoissonController@orderprices');
-
-Route::get('/drinks/details/{{$drink->id}}','BoissonController@show');
-Route::get('/drinks/{{$drink->id}}','BoissonController@show');
-Route::get('/drink/create', 'BoissonController@create');
-Route::post('/drinks', 'BoissonController@store');
-Route::resource('/drinks','BoissonController');
-Route::resource('/recipes','recipesController');
-Route::resource('/commandes','CommandeController');
-Route::resource('/pieces','controller_pieces');
-Route::resource('/stocks','controller_Stock');
+//Route::get('/drinks/create', 'DrinkController@create');
+//Route::post('/drinks', 'DrinkController@store');
 
 
+Route::resource('/drinks','DrinkController');
+Route::resource('/recipes','RecipeController');
+Route::resource('/sales','SaleController');
+Route::resource('/coins','CoinController');
+Route::resource('/stocks','StockController');
 //===============================================================
-// RESOURCE = à
-//Route::get('/boissons', 'BoissonController@index');
+// RESOURCE est egal à
+//Route::get('/boissons', 'DrinkController@index');
 //
-//Route::get('/boissons/create','BoissonController@create');
+//Route::get('/boissons/create','DrinkController@create');
 //
-//Route::post('/boissons','BoissonController@store');
+//Route::post('/boissons','DrinkController@store');
 //
+//Route::get('/boissons/{id}/edit','DrinkController@edit');
 //
-//Route::get('/boissons/{id}/edit','BoissonController@edit');
+//Route::put('/boissons/{id}','DrinkController@update');
 //
-//Route::put('/boissons/{id}','BoissonController@update');
-//
-//Route::delete('/boissons/{id}','BoissonController@destroy');
+//Route::delete('/boissons/{id}','DrinkController@destroy');

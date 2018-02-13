@@ -6,7 +6,7 @@
 
 @section ('content')
     <button type="button" class="btn btn-outline-success">Add</button>
-    @foreach ($allrecipes as $recipes)
+    @foreach ($recipes as $recipe)
         <table class="table">
             <thead>
             <tr>

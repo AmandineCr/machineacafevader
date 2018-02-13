@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Drink;
 use Illuminate\Http\Request;
 
-class BoissonController extends Controller
+class DrinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,21 +39,14 @@ class BoissonController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'Drink' =>[
-                'ID' => request('ID'),
+
+                'id' => request('id'),
                 'drinkName' => request('drinkName'),
                 'price' => request('price'),
-            ],
         ];
-//        $drink = new Drink;
-//        $drink->drinkName = input::get('drinkName');
-//        $drink->price = input::get('price');
-//        $drink->id = input::get('id');
-//        $drink->save();
-
-//        Session::flash('flash_message', 'Drink successfully added!');
-//        return redirect()->back();
-        return view('Drink.results,$data');
+//
+        $drink=Drink::create($data);
+        return redirect()->route('drinks');
     }
 
     /**
@@ -62,9 +55,8 @@ class BoissonController extends Controller
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function show(Drink $id)
+    public function show(Drink $drink)
     {
-        $drink = Drink::find($id);
         return view('back_office.show', ['drink'=> $drink]);
     }
 
@@ -74,10 +66,8 @@ class BoissonController extends Controller
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function edit(Drink $id)
+    public function edit(Drink $drink)
     {
-        $drink = Drink::find($id);
-
         return view('back_office.edit',['drink'=>$drink]);
     }
 
@@ -91,7 +81,7 @@ class BoissonController extends Controller
     public function update(Request $request, Drink $drink)
     {
         $data = [
-        request('ID'),
+        request('id'),
         request('drinkName'),
         request('price'),
         ];
@@ -110,20 +100,18 @@ class BoissonController extends Controller
     public function destroy(Drink $drink)
     {
         $drink->delete();
-        return redirect()->route('Drink');
-//        Drink::destroy($drink);
-//        Session::flash('message', 'You have successfull deleted a blog post');
-//
-//        return Redirect::route('drinks.index');
+        return redirect()->route('drinks');
+
     }
 
+
     function ordernames(){
-        $drinks = Drink::select('drinkName','price','ID')->orderBy('drinkName','desc')->get();
+        $drinks = Drink::select('drinkName','price','drink_ID')->orderBy('drinkName','desc')->get();
         return view('back_office/boissons', ['drinks'=> $drinks]);
     }
 
     function orderprices(){
-        $drinks = Drink::select('drinkName','price','ID')->orderBy('price','desc')->get();
+        $drinks = Drink::select('drinkName','price','drink_ID')->orderBy('price','desc')->get();
         return view('back_office/boissons', ['drinks'=> $drinks]);
     }
 }

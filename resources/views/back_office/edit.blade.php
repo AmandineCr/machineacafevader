@@ -21,15 +21,18 @@
                 <td>{{$drink->price}}</td>
             </tr>
         </table>
-        <form action="/edit" method="post">
+        <form action="/edit" method="put">
             {{csrf_field()}}
+            {{method_field('UPDATE')}}
             <div class="btn-group-vertical" data-toggle="buttons">
                 <input type="text" name="addDrink" class="form control" placeholder="Drink Name">
             </div>
         </form>
-        <form method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="_method" value="delete">
+
+        <form action="/edit" method="post">
+            {{ csrf_field()}}
+            {{method_field('DELETE')}}
             <button type="submit" class="btn btn-lg btn-warning col-md-offset-1 col-md-3">Supprimer</button>
         </form>
     </div>
+@stop

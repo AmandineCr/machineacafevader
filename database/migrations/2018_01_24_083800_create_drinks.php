@@ -14,7 +14,7 @@ class CreateDrinks extends Migration
     public function up()
     {
         Schema::create('drinks', function (Blueprint $table) {
-            $table->increments('ingredients_ID');
+            $table->increments('id');
             $table->timestamps();
             $table->string('ingredientName');
             $table->integer('price');
