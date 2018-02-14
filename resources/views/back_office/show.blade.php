@@ -24,12 +24,9 @@
 
         <div class="btn-group-vertical" data-toggle="buttons">
             <button type="button" class="btn btn-info">
-                add
-            </button>
-            <button type="button" class="btn">
                 edit
             </button>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-danger">
                 remove
             </button>
         </div>

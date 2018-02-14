@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ingredient;
 
 class IngredientController extends Controller
 {
@@ -14,7 +15,7 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-        return view('back_office/drinks/ingredients', ['ingredients'=> $ingredients]);
+        return view('back_office.ingredients', ['ingredients'=> $ingredients]);
     }
 
     /**

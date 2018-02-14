@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Stock;
 use Illuminate\Http\Request;
+use App\Stock;
 
 class StockController extends Controller
 {
@@ -13,9 +13,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        $Stocks = Stock::all();
-        dd($Stocks);
-        return view('back_office/stocks', ['stocks'=> $stocks]);
+        $stocks = Stock::all();
+        return view('back_office.stocks', ['stocks'=> $stocks]);
     }
 
     /**

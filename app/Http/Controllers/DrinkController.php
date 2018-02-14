@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Drink;
 use Illuminate\Http\Request;
+use App\Drink;
 
 class DrinkController extends Controller
 {
@@ -23,12 +22,13 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-
-    {
-        return view('Drink.formulaire');
-//            Drink::make('drink.create');
-    }
+//    public function create()
+//
+//    {
+////        Drink::make('drink.create');
+//        return view ('drinks');
+////
+//    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,15 +38,13 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-
-                'id' => request('id'),
-                'drinkName' => request('drinkName'),
-                'price' => request('price'),
-        ];
-//
-        $drink=Drink::create($data);
-        return redirect()->route('drinks');
+        $data = new Drink();
+        $data->drinkName=request('adddrink');
+        $data->price=request('addprice');
+//        dd($data);
+        $data->save();
+//        $drink=Drink::create($data);
+        return redirect('drinks');
     }
 
     /**
@@ -68,6 +66,7 @@ class DrinkController extends Controller
      */
     public function edit(Drink $drink)
     {
+
         return view('back_office.edit',['drink'=>$drink]);
     }
 
@@ -81,13 +80,13 @@ class DrinkController extends Controller
     public function update(Request $request, Drink $drink)
     {
         $data = [
-        request('id'),
-        request('drinkName'),
-        request('price'),
-        ];
-
-        $drink::update($data);
-            return Redirect()->route('drinks');
+                    request('drinkName'),
+                    request('price'),
+                ];
+        $data->save();
+//        $drink::update($data);
+//            return Redirect()->route('drinks');
+        return view('back_office/boissons', ['drink'=> $drink]);
     }
 
 
@@ -97,10 +96,12 @@ class DrinkController extends Controller
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Drink $drink)
+    public function destroy($id)
     {
+        $drink = Drink::find($id);
         $drink->delete();
-        return redirect()->route('drinks');
+//
+        return redirect('drinks');
 
     }
 

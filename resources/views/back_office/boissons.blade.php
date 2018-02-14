@@ -29,6 +29,7 @@
 
                     <td>
                         <form action="edit" method="post">
+                            {{method_field('PUT')}}
                             {{csrf_field()}}
                             <a class="btn btn-outline-info" href="/drinks/{{$drink->id}}/edit" >
                                 edit
@@ -37,26 +38,21 @@
                     </td>
                     <td>
                         <form method="post">
+                            {{method_field('DELETE')}}
                             {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="delete">
-                            <button type="submit" class="btn btn-lg btn-warning col-md-offset-1 col-md-3">Supprimer</button>
+                            <button type="submit" value="Delete" class="btn btn-outline-danger">Supprimer</button>
                         </form>
-
                     </td>
                 </tr>
             @endforeach
         </table>
 
-        <form action="/edit" method="post">
+        <form action="/drinks" method="post">
             {{csrf_field()}}
-        <div class="btn-group" data-toggle="buttons">
-            <div class="btn-group" data-toggle="buttons">
-                <input type="text" name="addDrink" class="form control" placeholder="Drink Name">
-            </div>
-            <div>
-                <input type="text" name="addPrice" class="form control" placeholder="Drink Price">
-            </div>
-                add
-        </div>
+            <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
+            <input type="number" name="addprice" class="form control" placeholder="Drink Price">
+            <button type="submit" class="btn btn-success">add</button>
+        </form>
+
 
 @stop

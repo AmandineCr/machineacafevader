@@ -6,33 +6,30 @@
 
 @section ('content')
     <button type="button" class="btn btn-outline-success">Add</button>
-    @foreach ($recipes as $recipe)
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{$drink}}</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ingredient Name</th>
+            <th>drink Name</th>
+            <th>dose</th>
+        </tr>
+        </thead>
 
-            <tbody>
+        <tbody>
+        @foreach ($recipes as $recipe)
             <tr>
-                @foreach($ingredients as $recipes)
-                    <td>{{$key}} : {{$value}}</td>
-                @endforeach
+                <th>{{$recipe->ingredientName}}</th>
+                <th>{{$recipe->drinkName}}</th>
+                <th>{{$recipe->dose}}</th>
             </tr>
-            <tr>
-            </tr>
-            </tbody>
-        </table>
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-danger">Remove</button>
-            <button type="button" class="btn btn-outline-warning">Modify</button>
-        </div>
-    @endforeach
+        @endforeach
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <button type="button" class="btn btn-outline-danger">Remove</button>
+        <button type="button" class="btn btn-outline-warning">Modify</button>
+    </div>
+
 
 
 @stop

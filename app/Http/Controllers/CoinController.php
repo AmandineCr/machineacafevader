@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Coin;
 
 class CoinController extends Controller
 {
@@ -13,7 +13,8 @@ class CoinController extends Controller
      */
     public function index()
     {
-        //
+        $coins = Coin::all();
+        return view('back_office.coins', ['coins'=> $coins]);
     }
 
     /**

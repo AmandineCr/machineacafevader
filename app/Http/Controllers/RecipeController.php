@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Recipe;
 
 class RecipeController extends Controller
 {
@@ -14,7 +14,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('back_office/drinks/recipes', ['recipes'=> $recipes]);
+        return view('back_office.recettes', ['recipes'=> $recipes]);
     }
 
     /**

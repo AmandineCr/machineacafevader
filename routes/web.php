@@ -35,19 +35,19 @@ Route::get('/drinks/{{$drink->drink_ID}}','DrinkController@show');
 
 
 Route::resource('/drinks','DrinkController');
-Route::resource('/recipes','RecipeController');
+Route::resource('/recettes','RecipeController');
 Route::resource('/sales','SaleController');
 Route::resource('/coins','CoinController');
 Route::resource('/stocks','StockController');
 //===============================================================
 // RESOURCE est egal à
-//Route::get('/boissons', 'DrinkController@index');
+//Route::get('/drinks', 'DrinkController@index');
 //
-//Route::get('/boissons/create','DrinkController@create');
+//Route::get('/drinks/create','DrinkController@create');
 //
-//Route::post('/boissons','DrinkController@store');
+//Route::post('/drinks','DrinkController@store');
 //
-//Route::get('/boissons/{id}/edit','DrinkController@edit');
+//Route::get('drinks/{id}/edit','DrinkController@edit');
 //
 //Route::put('/boissons/{id}','DrinkController@update');
 //
