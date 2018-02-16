@@ -35,10 +35,10 @@ Route::get('/drinks/{{$drink->drink_ID}}','DrinkController@show');
 
 
 Route::resource('/drinks','DrinkController');
-Route::resource('/recettes','RecipeController');
+Route::resource('/recipes','RecipeController');
 Route::resource('/sales','SaleController');
 Route::resource('/coins','CoinController');
-Route::resource('/stocks','StockController');
+Route::resource('/ingredients','IngredientController');
 //===============================================================
 // RESOURCE est egal à
 //Route::get('/drinks', 'DrinkController@index');

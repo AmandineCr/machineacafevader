@@ -15,14 +15,14 @@
             @else
                 <li class="nav-item">
                     @endif
-                    <a class="nav-link" href="/drinks">Boissons</a>
+                    <a class="nav-link" href="/drinks">Drinks</a>
                 </li>
                 @if(Request::is("recettes"))
                     <li class="nav-item active">
                 @else
                     <li class="nav-item">
                         @endif
-                        <a class="nav-link" href="recettes">Recettes</a>
+                        <a class="nav-link" href="/recipes">Recipes</a>
                     </li>
 
                     @if(Request::is("commandes"))
@@ -30,7 +30,7 @@
                     @else
                         <li class="nav-item">
                             @endif
-                            <a class="nav-link" href="commandes">Commandes</a>
+                            <a class="nav-link" href="/sales">Sales</a>
                         </li>
 
                         @if(Request::is("pieces"))
@@ -38,14 +38,14 @@
                         @else
                             <li class="nav-item">
                                 @endif
-                                <a class="nav-link" href="pieces">Pièces</a>
+                                <a class="nav-link" href="/coins">Coins</a>
                             </li>
                             @if(Request::is("stocks"))
                                 <li class="nav-item active">
                             @else
                                 <li class="nav-item">
                                     @endif
-                                    <a class="nav-link" href="stocks">Stocks</a>
+                                    <a class="nav-link" href="/ingredients">Ingredients</a>
                                 </li>
         </ul>
     </div>

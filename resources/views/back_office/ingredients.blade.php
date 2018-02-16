@@ -1,35 +1,36 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
-    Recipes management
+    Ingredients inventory
 @stop
 
 @section ('content')
-
     <table class="table">
         <thead>
         <tr>
             <th>ingredient Name</th>
             <th>drink Name</th>
-            <th>dose</th>
         </tr>
         </thead>
 
         <tbody>
-        @foreach ($recipes as $recipe)
+        @foreach ($ingredients as $ingredient)
             <tr>
-                <th>{{$recipe->ingredientName}}</th>
-                <th>{{$recipe->drinkName}}</th>
-                <th>{{$recipe->dose}}</th>
+                <th>{{$ingredient->id}}</th>
+                <th>{{$ingredient->ingredientName}}</th>
+                <th>{{$ingredient->inStock}}</th>
             </tr>
         @endforeach
         </tbody>
     </table>
+
     <div class="btn-group">
         <button type="button" class="btn btn-outline-success">Add</button>
-        <button type="button" class="btn btn-outline-warning">Modify</button>
         <button type="button" class="btn btn-outline-danger">Remove</button>
+        <button type="button" class="btn btn-outline-warning">Modify</button>
     </div>
+
+
 
 @stop
 

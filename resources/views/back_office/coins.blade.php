@@ -14,17 +14,17 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($coin_list as $type => $number)
+        @foreach($coins as $type => $quantity)
             <tr>
-                <td>{{$i++}}</td>
-                <td>{{$type/100}}€</td>
+                <td>{{$sales->id}}</td>
+                <td>{{$sales->type/100}}€</td>
                 <td>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <button type="button" class="btn btn-outline-danger">
                             -
                         </button>
                         <button type="button" class="btn btn-secondary">
-                            {{$number}}
+                            {{$sales->quantity}}
                         </button>
                         <button type="button" class="btn btn-outline-success">
                             +

@@ -1,7 +1,7 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
-    Gestion des commandes
+    Sales management
 @stop
 
 @section('content')
@@ -9,14 +9,14 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-         			@foreach($commandes as $commande)
-						<th>{{$commande->refCommande}}</th>
+         			@foreach($sales as $sale)
+						<th>{{$sale->drinkName}}</th>
 					@endforeach
          		</tr>
 			</thead>
      	 		<tr> 
-       	 			@foreach($commandes as $commande)
-						<td>{{$commande->refCommande}}</td>
+       	 			@foreach($sales as $sale)
+						<td>{{$sale->id}}</td>
 					@endforeach
          		</tr>
    		</table>

@@ -1,7 +1,7 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
-    Gestion des drinks
+    Drinks management
 @stop
 
 @section('content')

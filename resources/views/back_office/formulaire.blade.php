@@ -1,7 +1,7 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
-   Drinks formulaire
+   Drinks form
 @stop
 
 @section('content')
