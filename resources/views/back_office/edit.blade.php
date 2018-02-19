@@ -23,18 +23,26 @@
                     <form action="/drinks/{{$drink->id}}" method="post">
                         {{method_field('DELETE')}}
                         {{ csrf_field()}}
-                        <button type="submit" class="btn btn-lg btn-danger col-md-offset-1 col-md-5">Supprimer</button>
+                        <button type="submit" class="btn btn-outline-danger col-md-offset-1 col-md-5">Supprimer</button>
                     </form>
                 </td>
             </tr>
         </table>
 
-        <form action="edit"  method="post">
+        <tfooter>
+        <form action="/drinks/{{$drink->id}}" method="post">
             {{method_field('PUT')}}
             {{csrf_field()}}
-            <input type="text" name="addDrink" class="form control" placeholder="Drink Name">
-            <input type="number" name="addPrice" class="form control" placeholder="Drink Price">
-            <button type="submit" class="btn btn-warning">modif</button>
+            <td class="form-group">
+            <input type="text" name="adddrink" class="form-control" placeholder="Drink Name">
+            </td>
+            <td class="form-group">
+                <input type="number" name="addprice" class="form-control" placeholder="Drink Price">
+            </td>
+            <td>
+                <button type="submit" class="btn btn-outline-warning">edit</button>
+            </td>
         </form>
+        </tfooter>
     </div>
 @stop

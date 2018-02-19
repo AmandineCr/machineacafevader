@@ -35,7 +35,14 @@ class CoinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = new Coin();
+        $data->type=request('addcoin');
+        $data->quantity=request('addquantity');
+//        dd($data);
+        $data->save();
+//        $drink=Drink::create($data);
+        return redirect('coins');
     }
 
     /**
@@ -80,6 +87,9 @@ class CoinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coin = Coin::find($id);
+        $coin->delete();
+//
+        return redirect('drinks');
     }
 }

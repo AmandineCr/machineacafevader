@@ -5,26 +5,49 @@
 @stop
 
 @section('content')
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-         			@foreach($sales as $sale)
-						<th>{{$sale->drinkName}}</th>
-					@endforeach
-         		</tr>
-			</thead>
-     	 		<tr> 
-       	 			@foreach($sales as $sale)
-						<td>{{$sale->id}}</td>
-					@endforeach
-         		</tr>
-   		</table>
-   	</div><
-   	<div class='button'>
-   		<button type="button" class="btn btn-info">add</button>
-   		<button type="button" class="btn btn-primary">remove</button>
-   
-  	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Type</th>
+				<th scope="col">Sold at</th>
+			</tr>
+		</thead>
 
+		<tbody>
+		@foreach($sales as $sale)
+			<tr>
+				<td>{{$sale->id}}</td>
+				<td>{{$sale->drinkName}}</td>
+				<td>{{$sale->updated_at}}</td>
+				<td>
+					<form action="/sales/{{$sale->id}}" method="post">
+						{{method_field('DELETE')}}
+						{{ csrf_field() }}
+						<button type="submit" value="Delete" class="btn btn-outline-danger">Remove</button>
+					</form>
+				</td>
+			</tr>
+		@endforeach
+		</tbody>
+   	<tfooter>
+		<form action="/sales" method="post">
+			{{csrf_field()}}
+			<td>
+			</td>
+			<td class="form-group">
+				<input type="text" class="form-control" placeholder="Type">
+			</td>
+			<td class="form-group">
+				<input type="datetime" class="form-control" placeholder="Sold at">
+			</td>
+			<td>
+				<button type="submit" class="btn btn-outline-info">
+					add
+				</button>
+			</td>
+
+		</form>
+  	</tfooter>
+</table>
 @stop

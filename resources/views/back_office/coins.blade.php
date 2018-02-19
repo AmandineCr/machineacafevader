@@ -10,21 +10,21 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Type</th>
-            <th scope="col">Nombre</th>
+            <th scope="col">Quantity</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($coins as $type => $quantity)
+        @foreach($coins as $coin)
             <tr>
-                <td>{{$sales->id}}</td>
-                <td>{{$sales->type/100}}€</td>
+                <td>{{$coin->id}}</td>
+                <td>{{$coin->type/100}}€</td>
                 <td>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <button type="button" class="btn btn-outline-danger">
                             -
                         </button>
                         <button type="button" class="btn btn-secondary">
-                            {{$sales->quantity}}
+                            {{$coin->quantity}}
                         </button>
                         <button type="button" class="btn btn-outline-success">
                             +
@@ -36,16 +36,16 @@
         </tbody>
         <tfooter>
             <form>
+                <td class="form-group">
+                    <input name="addcoin" type="text" class="form-control" placeholder="Type">
+                </td>
+                <td class="form-group">
+                    <input name="addquantity" type="text" class="form-control" placeholder="Quantity">
+                </td>
                 <td>
                     <button type="submit" class="btn btn-outline-success">
                         add
                     </button>
-                </td>
-                <td class="form-group">
-                    <input type="text" class="form-control" placeholder="Type">
-                </td>
-                <td class="form-group">
-                    <input type="text" class="form-control" placeholder="Number">
                 </td>
             </form>
         </tfooter>

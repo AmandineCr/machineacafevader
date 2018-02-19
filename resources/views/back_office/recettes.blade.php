@@ -18,18 +18,36 @@
         <tbody>
         @foreach ($recipes as $recipe)
             <tr>
-                <th>{{$recipe->ingredientName}}</th>
-                <th>{{$recipe->drinkName}}</th>
-                <th>{{$recipe->dose}}</th>
+                <td>{{$recipe->ingredientName}}</td>
+                <td>{{$recipe->drinkName}}</td>
+                <td>{{$recipe->dose}}</td>
+                <td>
+                    <form action="/recipes/{{$recipe->id}}" method="post">
+                        {{method_field('DELETE')}}
+                        {{ csrf_field()}}
+                        <button type="submit" class="btn btn-outline-danger col-md-offset-1 col-md-6">Supprimer</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
+        <tfooter>
+                <form action="/recipes/{{$recipe->id}}" method="post">
+                    {{method_field('PUT')}}
+                    {{csrf_field()}}
+                    <td class="form-group">
+                        <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
+                    </td>
+                    <td class="form-group">
+                        <input type="number" name="addprice" class="form control" placeholder="Drink Price">
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-warning">edit</button>
+                    </td>
+                </form>
+        </tfooter>
     </table>
-    <div class="btn-group">
-        <button type="button" class="btn btn-outline-success">Add</button>
-        <button type="button" class="btn btn-outline-warning">Modify</button>
-        <button type="button" class="btn btn-outline-danger">Remove</button>
-    </div>
+
 
 @stop
 

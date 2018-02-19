@@ -79,14 +79,13 @@ class DrinkController extends Controller
      */
     public function update(Request $request, Drink $drink)
     {
-        $data = [
-                    request('drinkName'),
-                    request('price'),
-                ];
+        $data = new Drink();
+        $data->drinkName=request('adddrink');
+        $data->price=request('addprice');
         $data->save();
 //        $drink::update($data);
 //            return Redirect()->route('drinks');
-        return view('back_office/boissons', ['drink'=> $drink]);
+        return redirect('drinks');
     }
 
 

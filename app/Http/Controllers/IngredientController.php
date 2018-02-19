@@ -36,7 +36,14 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = new Ingredient();
+        $data->ingredientName=request('addingredient');
+        $data->instock=request('addstock');
+//        dd($data);
+        $data->save();
+//        $drink=Drink::create($data);
+        return redirect('drinks');
     }
 
     /**
@@ -81,6 +88,9 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        $ingredient->delete();
+//
+        return redirect('drinks');
     }
 }

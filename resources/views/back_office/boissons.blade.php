@@ -15,6 +15,7 @@
                 <th>Details</th>
             </tr>
             </thead>
+            <tbody>
             @foreach($drinks as $drink)
                 <tr>
                     <td>
@@ -37,7 +38,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post">
+                        <form action="/drinks/{{$drink->id}}" method="post">
                             {{method_field('DELETE')}}
                             {{ csrf_field() }}
                             <button type="submit" value="Delete" class="btn btn-outline-danger">Supprimer</button>
@@ -45,14 +46,23 @@
                     </td>
                 </tr>
             @endforeach
-        </table>
-
-        <form action="/drinks" method="post">
+            </tbody>
+            <tfooter>
+            <form action="/drinks" method="post">
             {{csrf_field()}}
-            <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
-            <input type="number" name="addprice" class="form control" placeholder="Drink Price">
-            <button type="submit" class="btn btn-success">add</button>
-        </form>
+                <td class="form-group">
+                    <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
+                </td>
+                <td class="form-group">
+                    <input type="integer" name="addprice" class="form control" placeholder="Drink Price">
+                </td>
+                <td>
 
-
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-outline-success">add</button>
+                </td>
+            </form>
+        </tfooter>
+        </table>
 @stop
