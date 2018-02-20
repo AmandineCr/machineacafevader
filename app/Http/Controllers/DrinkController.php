@@ -22,13 +22,13 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function create()
-//
-//    {
-////        Drink::make('drink.create');
+  public function create()
+
+    {
+//        Drink::make('drink.create');
 //        return view ('drinks');
-////
-//    }
+//
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,7 +43,7 @@ class DrinkController extends Controller
         $data->price=request('addprice');
 //        dd($data);
         $data->save();
-//        $drink=Drink::create($data);
+
         return redirect('drinks');
     }
 
@@ -83,8 +83,7 @@ class DrinkController extends Controller
         $data->drinkName=request('adddrink');
         $data->price=request('addprice');
         $data->save();
-//        $drink::update($data);
-//            return Redirect()->route('drinks');
+
         return redirect('drinks');
     }
 
@@ -101,8 +100,8 @@ class DrinkController extends Controller
         $drink->delete();
 //
         return redirect('drinks');
-
     }
+
 
 
     function ordernames(){

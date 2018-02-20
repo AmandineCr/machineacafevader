@@ -33,13 +33,12 @@
    	<tfooter>
 		<form action="/sales" method="post">
 			{{csrf_field()}}
-			<td>
+
+			<td class="form-group">
+				<input type="text" name="addtype" class="form-control" placeholder="Type">
 			</td>
 			<td class="form-group">
-				<input type="text" class="form-control" placeholder="Type">
-			</td>
-			<td class="form-group">
-				<input type="datetime" class="form-control" placeholder="Sold at">
+				<input type="datetime" name="adddate" class="form-control" placeholder="Sold at">
 			</td>
 			<td>
 				<button type="submit" class="btn btn-outline-info">

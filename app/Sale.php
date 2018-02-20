@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
+    protected $fillable = ['drinkName','created_at'];
+
     function drink(){
         belongsTo('app\Drink');
-
-
     }
 
 }

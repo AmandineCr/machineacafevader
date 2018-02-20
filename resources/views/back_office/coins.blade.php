@@ -35,7 +35,8 @@
         @endforeach
         </tbody>
         <tfooter>
-            <form>
+            <form action="/recipes" method="post">
+                {{csrf_field()}}
                 <td class="form-group">
                     <input name="addcoin" type="text" class="form-control" placeholder="Type">
                 </td>

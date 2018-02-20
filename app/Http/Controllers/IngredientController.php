@@ -39,11 +39,10 @@ class IngredientController extends Controller
 
         $data = new Ingredient();
         $data->ingredientName=request('addingredient');
-        $data->instock=request('addstock');
-//        dd($data);
+        $data->inStock=request('addstock');
         $data->save();
-//        $drink=Drink::create($data);
-        return redirect('drinks');
+
+        return redirect('ingredients');
     }
 
     /**
@@ -54,7 +53,7 @@ class IngredientController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('back_office.show', ['ingredient'=> $ingredient]);
     }
 
     /**
@@ -63,9 +62,9 @@ class IngredientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('back_office.editingredient',['ingredient'=>$ingredient]);
     }
 
     /**
@@ -77,7 +76,11 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = new Ingredient();
+        $data->ingredientName=request('addingredient');
+        $data->inStock=request('addstock');
+        $data->save();
+        return redirect('ingredients');
     }
 
     /**
@@ -91,6 +94,6 @@ class IngredientController extends Controller
         $ingredient = Ingredient::find($id);
         $ingredient->delete();
 //
-        return redirect('drinks');
+        return redirect('ingredients');
     }
 }

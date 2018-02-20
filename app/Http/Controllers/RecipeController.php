@@ -35,7 +35,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Recipe();
+        $data->drinkName=request('adddrink');
+        $data->ingredientName=request('addingredient');
+        $data->dose=request('adddose');
+        $data->save();
+
+        return redirect('recipes');
+
+
     }
 
     /**
@@ -46,7 +54,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('back_office.show', ['recipe'=> $recipe]);
     }
 
     /**
@@ -69,7 +77,13 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = new Recipe();
+        $data->drinkName=request('adddrink');
+        $data->ingredientName=request('addingredient');
+        $data->dose=request('adddose');
+        $data->save();
+
+        return redirect('recipes');
     }
 
     /**

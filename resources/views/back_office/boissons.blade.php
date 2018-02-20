@@ -32,7 +32,7 @@
                         <form action="edit" method="post">
                             {{method_field('PUT')}}
                             {{csrf_field()}}
-                            <a class="btn btn-outline-info" href="/drinks/{{$drink->id}}/edit" >
+                            <a class="btn btn-outline-info" href="/drinks/{{$drink->id}}/edit">
                                 edit
                             </a>
                         </form>
@@ -47,22 +47,23 @@
                 </tr>
             @endforeach
             </tbody>
-            <tfooter>
-            <form action="/drinks" method="post">
-            {{csrf_field()}}
-                <td class="form-group">
-                    <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
-                </td>
-                <td class="form-group">
-                    <input type="integer" name="addprice" class="form control" placeholder="Drink Price">
-                </td>
-                <td>
 
-                </td>
-                <td>
-                    <button type="submit" class="btn btn-outline-success">add</button>
-                </td>
-            </form>
-        </tfooter>
+            <tfooter>
+                <form action="/drinks" method="post">
+                    {{csrf_field()}}
+                    <td class="form-group">
+                        <input type="text" name="adddrink" class="form control" placeholder="Drink Name">
+                    </td>
+                    <td class="form-group">
+                        <input type="integer" name="addprice" class="form control" placeholder="Drink Price">
+                    </td>
+                    <td>
+                    </td>
+
+                    <td>
+                        <button type="submit" class="btn btn-outline-success">add</button>
+                    </td>
+                </form>
+            </tfooter>
         </table>
 @stop

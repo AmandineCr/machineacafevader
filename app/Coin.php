@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coin extends Model
 {
-    //
+    protected $fillable = ['type','quantity'];
 }

@@ -41,7 +41,7 @@ class CoinController extends Controller
         $data->quantity=request('addquantity');
 //        dd($data);
         $data->save();
-//        $drink=Drink::create($data);
+//
         return redirect('coins');
     }
 
@@ -51,9 +51,9 @@ class CoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($coin)
     {
-        //
+        return view('back_office.show', ['coin'=>$coin]);
     }
 
     /**
@@ -62,9 +62,9 @@ class CoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($coin)
     {
-        //
+        return view('back_office.edit',['coin'=>$coin]);
     }
 
     /**
@@ -76,7 +76,11 @@ class CoinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = new Coin();
+        $data->type=request('addcoin');
+        $data->quantity=request('addquantity');
+        $data->save();
+        return redirect('ingredients');
     }
 
     /**
