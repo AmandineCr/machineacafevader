@@ -14,7 +14,7 @@ class CoinController extends Controller
     public function index()
     {
         $coins = Coin::all();
-        return view('back_office.coins', ['coins'=> $coins]);
+        return view('back_office/coins.coins', ['coins'=> $coins]);
     }
 
     /**
@@ -53,7 +53,7 @@ class CoinController extends Controller
      */
     public function show($coin)
     {
-        return view('back_office.show', ['coin'=>$coin]);
+        return view('back_office/coins.show', ['coin'=>$coin]);
     }
 
     /**
@@ -64,7 +64,7 @@ class CoinController extends Controller
      */
     public function edit($coin)
     {
-        return view('back_office.edit',['coin'=>$coin]);
+        return view('back_office/coins.edit',['coin'=>$coin]);
     }
 
     /**
@@ -80,7 +80,7 @@ class CoinController extends Controller
         $data->type=request('addcoin');
         $data->quantity=request('addquantity');
         $data->save();
-        return redirect('ingredients');
+        return redirect('coins');
     }
 
     /**
@@ -94,6 +94,6 @@ class CoinController extends Controller
         $coin = Coin::find($id);
         $coin->delete();
 //
-        return redirect('drinks');
+        return redirect('coins');
     }
 }

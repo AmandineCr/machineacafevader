@@ -15,7 +15,7 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-        return view('back_office.ingredients', ['ingredients'=> $ingredients]);
+        return view('back_office/ingredients.ingredients', ['ingredients'=> $ingredients]);
     }
 
     /**
@@ -53,7 +53,7 @@ class IngredientController extends Controller
      */
     public function show($id)
     {
-        return view('back_office.show', ['ingredient'=> $ingredient]);
+        return view('back_office/ingredients.show', ['ingredient'=> $ingredient]);
     }
 
     /**
@@ -64,7 +64,7 @@ class IngredientController extends Controller
      */
     public function edit()
     {
-        return view('back_office.editingredient',['ingredient'=>$ingredient]);
+        return view('back_office/ingredients.edit',['ingredient'=>$ingredient]);
     }
 
     /**
@@ -74,12 +74,11 @@ class IngredientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,Ingredient $ingredient)
     {
-        $data = new Ingredient();
-        $data->ingredientName=request('addingredient');
-        $data->inStock=request('addstock');
-        $data->save();
+        $ingredient->ingredientName=request('addingredient');
+        $ingredient->inStock=request('addstock');
+        $ingredient->save();
         return redirect('ingredients');
     }
 

@@ -14,7 +14,7 @@ class DrinkController extends Controller
     public function index()
     {
         $drinks = Drink::all();
-        return view('back_office/boissons', ['drinks'=> $drinks]);
+        return view('back_office/drinks.boissons', ['drinks'=> $drinks]);
     }
 
     /**
@@ -55,7 +55,7 @@ class DrinkController extends Controller
      */
     public function show(Drink $drink)
     {
-        return view('back_office.show', ['drink'=> $drink]);
+        return view('back_office/drinks.show', ['drink'=> $drink]);
     }
 
     /**
@@ -67,7 +67,7 @@ class DrinkController extends Controller
     public function edit(Drink $drink)
     {
 
-        return view('back_office.edit',['drink'=>$drink]);
+        return view('back_office/drinks.edit',['drink'=>$drink]);
     }
 
     /**
@@ -79,11 +79,9 @@ class DrinkController extends Controller
      */
     public function update(Request $request, Drink $drink)
     {
-        $data = new Drink();
-        $data->drinkName=request('adddrink');
-        $data->price=request('addprice');
-        $data->save();
-
+        $drink->drinkName=request('adddrink');
+        $drink->price=request('addprice');
+        $drink->save();
         return redirect('drinks');
     }
 
@@ -105,12 +103,12 @@ class DrinkController extends Controller
 
 
     function ordernames(){
-        $drinks = Drink::select('drinkName','price','drink_ID')->orderBy('drinkName','desc')->get();
-        return view('back_office/boissons', ['drinks'=> $drinks]);
+        $drinks = Drink::select('drinkName','price','id')->orderBy('drinkName','desc')->get();
+        return view('back_office/drinks.boissons', ['drinks'=> $drinks]);
     }
 
     function orderprices(){
-        $drinks = Drink::select('drinkName','price','drink_ID')->orderBy('price','desc')->get();
-        return view('back_office/boissons', ['drinks'=> $drinks]);
+        $drinks = Drink::select('drinkName','price','id')->orderBy('price','desc')->get();
+        return view('back_office/drinks.boissons', ['drinks'=> $drinks]);
     }
 }

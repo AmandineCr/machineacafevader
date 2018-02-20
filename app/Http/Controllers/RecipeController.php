@@ -14,7 +14,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('back_office.recettes', ['recipes'=> $recipes]);
+        return view('back_office/recipes.recettes', ['recipes'=> $recipes]);
     }
 
     /**
@@ -54,7 +54,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        return view('back_office.show', ['recipe'=> $recipe]);
+        return view('back_office/recipes.show', ['recipe'=> $recipe]);
     }
 
     /**
