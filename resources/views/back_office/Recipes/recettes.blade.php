@@ -16,11 +16,14 @@
         </thead>
 
         <tbody>
-        @foreach ($recipes as $recipe)
+        @foreach($recipes as $recipe)
+            // dans toutes mes recettes je veux selectionner une recette
+            @foreach($recipe->ingredients as $ingredient)
+                // relation dans ma recette je veux recuperer un ingredient
             <tr>
                 <td>{{$recipe->drinkName}}</td>
-                <td>{{$recipe->ingredientName}}</td>
-                <td>{{$recipe->dose}}</td>
+                <td>{{$ingredient->ingredientName}}</td>
+                <td>{{$ingredient->pivot->dose}}</td>
                 <td>
                     <form action="/recipes/{{$recipe->id}}" method="post">
                         {{method_field('DELETE')}}
@@ -28,8 +31,9 @@
                         <button type="submit" class="btn btn-outline-danger col-md-offset-1 col-md-5">X</button>
                     </form>
                 </td>
-            </tr>
+            @endforeach
         @endforeach
+            </tr>
         </tbody>
         <tfooter>
                 <form action="/recipes" method="post">

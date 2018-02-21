@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Ingredient;
+use App\Drink;
 use Illuminate\Http\Request;
-use App\Recipe;
 
 class RecipeController extends Controller
 {
@@ -13,10 +15,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
-        return view('back_office/recipes.recettes', ['recipes'=> $recipes]);
-    }
+        $recipes = Drink::with('ingredients')->get();
 
+return view('back_office/recipes.recettes', ['recipes' => $recipes]);
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -36,23 +38,21 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $data = new Recipe();
-        $data->drinkName=request('adddrink');
-        $data->ingredientName=request('addingredient');
-        $data->dose=request('adddose');
+        $data->recipes->drinkName=request('adddrink');
+        $data->ingredient->ingredientName=request('addingredient');
+        $data->ingredient->pivot->dose=request('adddose');
         $data->save();
 
         return redirect('recipes');
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Drink $drink)
     {
         return view('back_office/recipes.show', ['recipe'=> $recipe]);
     }
@@ -60,10 +60,10 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Drink $drink)
     {
         //
     }
@@ -72,16 +72,15 @@ class RecipeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Drink $drink, $recipes)
     {
-        $data = new Recipe();
-        $data->drinkName=request('adddrink');
-        $data->ingredientName=request('addingredient');
-        $data->dose=request('adddose');
-        $data->save();
+        $recipes->drinkName=request('adddrink');
+        $recipes->ingredientName=request('addingredient');
+        $recipes->dose=request('adddose');
+        $recipes->save();
 
         return redirect('recipes');
     }
@@ -89,14 +88,11 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Drink $drink)
     {
-        $recipe = Recipe::find($id);
         $recipe->delete();
-//
-        return redirect('recipes');
     }
 }

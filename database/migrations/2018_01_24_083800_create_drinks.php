@@ -18,7 +18,7 @@ class CreateDrinks extends Migration
             $table->timestamps();
             $table->string('ingredientName');
             $table->integer('price');
-            $table->text('drinkName');
+            $table->string('drinkName');
         });
     }
 

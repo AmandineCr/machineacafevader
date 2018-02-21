@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Ingredient;
+use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
@@ -36,33 +36,32 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = new Ingredient();
         $data->ingredientName=request('addingredient');
         $data->inStock=request('addstock');
         $data->save();
-
         return redirect('ingredients');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ingredient $ingredient)
     {
+
         return view('back_office/ingredients.show', ['ingredient'=> $ingredient]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Ingredient $ingredient)
     {
         return view('back_office/ingredients.edit',['ingredient'=>$ingredient]);
     }
@@ -71,10 +70,10 @@ class IngredientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,Ingredient $ingredient)
+    public function update(Request $request, Ingredient $ingredient)
     {
         $ingredient->ingredientName=request('addingredient');
         $ingredient->inStock=request('addstock');
@@ -85,14 +84,13 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ingredient $ingredient)
     {
-        $ingredient = Ingredient::find($id);
         $ingredient->delete();
-//
+
         return redirect('ingredients');
     }
 }

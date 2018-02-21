@@ -15,10 +15,11 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->text(ingredientName);
-            $table->text(drinkName);
+            $table->string('ingredientName');
+            $table->string('drinkName');
+            $table->integer('inStock');
+            $table->foreign('boisson_id')->references('id')->on('boissons');
             $table->timestamps();
-            $table->boolean('inStock');
         });
     }
 

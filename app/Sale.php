@@ -9,7 +9,7 @@ class Sale extends Model
     protected $fillable = ['drinkName','created_at'];
 
     function drink(){
-        belongsTo('app\Drink');
+        return $this->belongsTo('app\Drink');
     }
 
 }

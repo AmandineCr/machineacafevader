@@ -22,21 +22,14 @@
                 <td>{{$ingredient->ingredientName}}</td>
                 <td>{{$ingredient->inStock}}</td>
                 <td>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <form action="/edit" method="post">
-                            {{method_field('PUT')}}
-                            {{csrf_field()}}
-                            <a class="btn btn-outline-info" href="/ingredients/{{$ingredient->id}}/edit">
-                                edit
-                            </a>
-                        </form>
-
-                        <form action="/ingredients/{{$ingredient->id}}" method="post">
-                            {{method_field('DELETE')}}
-                            {{ csrf_field() }}
-                            <button type="submit" value="Delete" class="btn btn-outline-danger">Supprimer</button>
-                        </form>
-                    </div>
+                    <a class="btn btn-outline-info" href="/ingredients/{{$ingredient->id}}/edit">
+                        edit
+                    </a>
+                    <form action="/ingredients/{{$ingredient->id}}" method="post">
+                        {{method_field('DELETE')}}
+                        {{ csrf_field() }}
+                        <button type="submit" value="Delete" class="btn btn-outline-danger">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

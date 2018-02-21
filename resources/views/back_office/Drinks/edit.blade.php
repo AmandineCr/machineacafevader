@@ -13,8 +13,8 @@
                 <th>Drink informations</th>
                 <th>Prices</th>
             </tr>
-
             </thead>
+            <tbody>
             <tr>
                 <td>{{$drink->id}}</td>
                 <td>{{$drink->drinkName}}</td>
@@ -27,22 +27,26 @@
                     </form>
                 </td>
             </tr>
+            </tbody>
         </table>
 
         <tfooter>
-        <form action="/drinks/{{$drink->id}}" method="post">
-            {{method_field('PUT')}}
-            {{csrf_field()}}
-            <td class="form-group">
-            <input type="text" name="adddrink" class="form-control" placeholder="Drink Name">
-            </td>
-            <td class="form-group">
-                <input type="number" name="addprice" class="form-control" placeholder="Drink Price">
-            </td>
-            <td>
-                <button type="submit" class="btn btn-outline-warning">edit</button>
-            </td>
-        </form>
+            <form action="/drinks/{{$drink->id}}" method="post">
+                {{method_field('PUT')}}
+                {{csrf_field()}}
+                <td class="form-group">
+                    <input type="text" name="adddrink" class="form-control" placeholder="Drink Name">
+                </td>
+                <td class="form-group">
+                    <input type="number" name="addprice" class="form-control" placeholder="Drink Price">
+                </td>
+                <td>
+                </td>
+
+                <td>
+                    <button type="submit" class="btn btn-outline-warning">edit</button>
+                </td>
+            </form>
         </tfooter>
     </div>
 @stop

@@ -16,7 +16,6 @@
 
             </thead>
             <tr>
-                @foreach ($ingredients as $ingredient)
                 <td>{{$ingredient->id}}</td>
                 <td>{{$ingredient->ingredientName}}</td>
                 <td>{{$ingredient->inStock}}</td>
@@ -26,8 +25,8 @@
                         {{ csrf_field()}}
                         <button type="submit" class="btn btn-outline-danger col-md-offset-1 col-md-5">Supprimer</button>
                     </form>
+
                 </td>
-                @endforeach
             </tr>
         </table>
         <tfooter>
@@ -35,10 +34,10 @@
                 {{method_field('PUT')}}
                 {{csrf_field()}}
                 <td class="form-group">
-                    <input type="text" name="addingredient" class="form-control" placeholder="Drink Name">
+                    <input type="text" name="addingredient" class="form-control" value="{{$ingredient->ingredientName}}">
                 </td>
                 <td class="form-group">
-                    <input type="number" name="addstock" class="form-control" placeholder="Drink Price">
+                    <input type="number" name="addstock" class="form-control" value="{{$ingredient->inStock}}">
                 </td>
                 <td>
                     <button type="submit" class="btn btn-outline-warning">edit</button>

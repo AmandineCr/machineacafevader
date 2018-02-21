@@ -9,11 +9,15 @@ class Drink extends Model
     protected $fillable = ['drinkName','price'];
 
     function sales(){
-        hasMany('app\Sale');
+        return $this->hasMany('app\Sale');
     }
 
+//    function ingredientsdose()
+//    {
+//        return $this->belongsToMany('app\Sale')->withpivot(['in']);
+//    }
     function ingredients(){
-        belongsToMany('app\Sale')->withpivot(['dose']);
+        return $this->belongsToMany('App\Ingredient')->withPivot(['dose']);
     }
 
 }
