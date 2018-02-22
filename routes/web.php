@@ -32,7 +32,7 @@ Route::get('/drinks/{{$drink->drink_ID}}','DrinkController@show');
 
 //Route::get('/drinks/create', 'DrinkController@create');
 //Route::post('/drinks', 'DrinkController@store');
-
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 Route::resource('/drinks','DrinkController');
 Route::resource('/recipes','RecipeController');
@@ -52,3 +52,7 @@ Route::resource('/ingredients','IngredientController');
 //Route::put('/boissons/{id}','DrinkController@update');
 //
 //Route::delete('/boissons/{id}','DrinkController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
