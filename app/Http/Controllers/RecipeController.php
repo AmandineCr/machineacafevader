@@ -37,13 +37,7 @@ return view('back_office/recipes.recettes', ['recipes' => $recipes]);
      */
     public function store(Request $request)
     {
-        $data = new Recipe();
-        $data->recipes->drinkName=request('adddrink');
-        $data->ingredient->ingredientName=request('addingredient');
-        $data->ingredient->pivot->dose=request('adddose');
-        $data->save();
 
-        return redirect('recipes');
     }
 
     /**
@@ -75,14 +69,9 @@ return view('back_office/recipes.recettes', ['recipes' => $recipes]);
      * @param  \App\Drink  $drink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Drink $drink, $recipes)
+    public function update(Request $request, Drink $drink)
     {
-        $recipes->drinkName=request('adddrink');
-        $recipes->ingredientName=request('addingredient');
-        $recipes->dose=request('adddose');
-        $recipes->save();
 
-        return redirect('recipes');
     }
 
     /**
@@ -93,6 +82,6 @@ return view('back_office/recipes.recettes', ['recipes' => $recipes]);
      */
     public function destroy(Drink $drink)
     {
-        $recipe->delete();
+//        $recipe->delete();
     }
 }

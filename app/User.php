@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function drinks()
+    {
+        return $this->belongsToMany('App\Drink', 'sales')
+            ->withPivot('id')
+            ->withTimestamps();
+    }
 }

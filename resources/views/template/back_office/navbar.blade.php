@@ -47,6 +47,21 @@
                                     @endif
                                     <a class="nav-link" href="/ingredients">Ingredients</a>
                                 </li>
+
+                                @if(Request::is("login"))
+                                    <li class="nav-item active">
+                                @else
+                                    <li class="nav-item">
+                                        @endif
+                                        <a class="nav-link" href="/login">Login</a>
+                                    </li>
+                                    @if(Request::is("register"))
+                                        <li class="nav-item active">
+                                    @else
+                                        <li class="nav-item">
+                                            @endif
+                                            <a class="nav-link" href="/register">Register</a>
+                                        </li>
         </ul>
     </div>
 </nav>
